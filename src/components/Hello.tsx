@@ -17,7 +17,7 @@ function Hello({ name, enthusiasmLevel = 1, onIncrement, onDecrement }: Props) {
   return (
     <View style={styles.root}>
         <Text style={styles.greeting}>
-            Hello, there {name + getExclamationMarks(enthusiasmLevel)}
+            Hello {name + getExclamationMarks(enthusiasmLevel)}
         </Text>
         <View style={styles.buttons}>
             <View style={styles.button}>

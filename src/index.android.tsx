@@ -20,7 +20,7 @@ export default class MyAwesomeProject extends React.Component<object, object> {
           Welcome to React Native!
         </Text>
         <Text style={styles.instructions}>
-          To get started, edit index.android.js
+          To get started, edit index.android.tsx
         </Text>
         <Text style={styles.instructions}>
           Double tap R on your keyboard to reload,{'\n'}
