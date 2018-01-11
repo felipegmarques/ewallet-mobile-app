@@ -12,12 +12,12 @@ export interface Props {
 function Hello({ name, enthusiasmLevel = 1, onIncrement, onDecrement }: Props) {
   if (enthusiasmLevel <= 0) {
     throw new Error('You could be a little more enthusiastic. :D');
-  }
+}
 
   return (
     <View style={styles.root}>
         <Text style={styles.greeting}>
-            Hello {name + getExclamationMarks(enthusiasmLevel)}
+            Hello, there {name + getExclamationMarks(enthusiasmLevel)}
         </Text>
         <View style={styles.buttons}>
             <View style={styles.button}>
