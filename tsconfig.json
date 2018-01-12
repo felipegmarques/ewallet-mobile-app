@@ -6,6 +6,7 @@
     "jsx": "react",                           /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
     "sourceMap": true,                        /* Generates corresponding '.map' file. */
     "outDir": "./lib",                        /* Redirect output structure to the directory. */
+    "baseUrl": "./src",
 
     /* Strict Type-Checking Options */
     "strict": true,                            /* Enable all strict type-checking options. */

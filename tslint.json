@@ -10,7 +10,8 @@
             "options": [120]
         },
         "no-empty": false,
-        "object-literal-sort-keys": false
+        "object-literal-sort-keys": false,
+        "quotemark": [true, "single"]
     },
     "rulesDirectory": []
 }
