@@ -1,6 +1,6 @@
 // src/components/Hello.tsx
-import * as React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import * as React from "react";
+import { Button, StyleSheet, Text, View } from "react-native";
 
 export interface Props {
   name: string;
@@ -11,8 +11,8 @@ export interface Props {
 
 function Hello({ name, enthusiasmLevel = 1, onIncrement, onDecrement }: Props) {
   if (enthusiasmLevel <= 0) {
-    throw new Error('You could be a little more enthusiastic. :D');
-}
+    throw new Error("You could be a little more enthusiastic. :D");
+  }
 
   return (
     <View style={styles.root}>
@@ -21,10 +21,10 @@ function Hello({ name, enthusiasmLevel = 1, onIncrement, onDecrement }: Props) {
         </Text>
         <View style={styles.buttons}>
             <View style={styles.button}>
-                <Button title="-" onPress={onDecrement || (() => {})} color='red' />
+                <Button title="-" onPress={onDecrement || (() => {})} color="red" />
             </View>
             <View style={styles.button}>
-                <Button title="+" onPress={onIncrement || (() => {})} color='blue' />
+                <Button title="+" onPress={onIncrement || (() => {})} color="blue" />
             </View>
         </View>
     </View>
@@ -38,7 +38,7 @@ export default Hello;
 const styles = StyleSheet.create({
     root: {
         alignItems: "center",
-        alignSelf: "center"
+        alignSelf: "center",
     },
     buttons: {
         flexDirection: "row",
@@ -53,12 +53,12 @@ const styles = StyleSheet.create({
     },
     greeting: {
         color: "#999",
-        fontWeight: "bold"
-    }
+        fontWeight: "bold",
+    },
 });
 
 // helpers
 
 function getExclamationMarks(numChars: number) {
-  return Array(numChars + 1).join('!');
+  return Array(numChars + 1).join("!");
 }
