@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
     greeting: {
         color: '#999',
         fontWeight: 'bold',
+        fontFamily: 'Nunito',
     },
 });
 
