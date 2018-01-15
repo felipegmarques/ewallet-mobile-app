@@ -12,6 +12,13 @@ import Hello from '../../lib/components/Hello';
 import fontMaker from '../../lib/components/utilities/FontMaker';
 
 storiesOf('Typography', module)
+  .add('Headers', () =>
+    <View style={{ marginLeft: 16}} >
+      <Text>Header 1</Text>
+    </View>
+  );
+
+storiesOf('Fonts', module)
   .add('Nunito', () =>
   <View style={{ marginLeft: 16 }}>
     <Text style={{ fontSize: 24,
@@ -29,4 +36,27 @@ storiesOf('Typography', module)
     <Text style={{ fontSize: 24,
                   ...fontMaker({fontFamily: 'Nunito', fontWeight: '900'})}}>Nunito Black</Text>
   </View>
-);
+  ).add('Nunito Italic', () =>
+  <View style={{ marginLeft: 16 }}>
+    <Text style={{ fontSize: 24,
+                  ...fontMaker({fontFamily: 'Nunito',
+                    fontWeight: '200', fontStyle: 'italic'})}}>Nunito ExtraLight</Text>
+    <Text style={{ fontSize: 24,
+                  ...fontMaker({fontFamily: 'Nunito',
+                    fontWeight: '300', fontStyle: 'italic'})}}>Nunito Light</Text>
+    <Text style={{ fontSize: 24,
+                  ...fontMaker({fontFamily: 'Nunito', fontStyle: 'italic'})}}>Nunito Regular</Text>
+    <Text style={{ fontSize: 24,
+                  ...fontMaker({fontFamily: 'Nunito',
+                    fontWeight: '600', fontStyle: 'italic'})}}>Nunito SemiBold</Text>
+    <Text style={{ fontSize: 24,
+                  ...fontMaker({fontFamily: 'Nunito',
+                    fontWeight: 'bold', fontStyle: 'italic'})}}>Nunito Bold</Text>
+    <Text style={{ fontSize: 24,
+                  ...fontMaker({fontFamily: 'Nunito',
+                    fontWeight: '800', fontStyle: 'italic'})}}>Nunito ExtraBold</Text>
+    <Text style={{ fontSize: 24,
+                  ...fontMaker({fontFamily: 'Nunito',
+                    fontWeight: '900', fontStyle: 'italic'})}}>Nunito Black</Text>
+  </View>
+  );
