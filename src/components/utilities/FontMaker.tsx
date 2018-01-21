@@ -1,3 +1,4 @@
+import { TextStyle } from 'react-native';
 const fontWeightMap: any = {
   normal: '',
   100: 'Thin',
@@ -13,12 +14,6 @@ const fontWeightMap: any = {
 
 const fontStyleMap: any = { normal: '', italic: 'Italic' };
 
-interface FontSpec {
-  fontFamily: string;
-  fontWeight?: string;
-  fontStyle?: string;
-}
-
 const addWeight = (fontFamily: string, fontWeight: string) => {
   return fontFamily + fontWeightMap[fontWeight];
 };
@@ -26,7 +21,7 @@ const addWeight = (fontFamily: string, fontWeight: string) => {
 const addStyle = (fontFamily: string, fontStyle: string) =>
   fontFamily + fontStyleMap[fontStyle];
 
-const fontMaker = (fontSpec: FontSpec, os: string) => {
+const fontMaker = (fontSpec: TextStyle, os: string): TextStyle  => {
   const {fontWeight, fontStyle } = fontSpec;
   let fontFamily = fontSpec.fontFamily;
   if ((fontStyle === 'italic')

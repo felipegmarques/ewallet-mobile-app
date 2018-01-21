@@ -5,16 +5,14 @@ import { storiesOf } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
-import Button from './Button';
-import CenterView from './CenterView';
-import Welcome from './Welcome';
-import Hello from '../../lib/components/Hello';
+import { H1, H2 } from '../../lib/components/Typography';
 import fontMaker from '../../lib/components/utilities/FontMaker';
 
 storiesOf('Typography', module)
   .add('Headers', () =>
     <View style={{ marginLeft: 16}} >
-      <Text>Header 1</Text>
+      <H1>Header 1</H1>
+      <H2>Header 2</H2>
     </View>
   );
 
