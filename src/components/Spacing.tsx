@@ -3,7 +3,7 @@ const Sizes = {
   Large: 24,
   Regular: 16,
   Small: 12,
-  XSmall: 10,
+  XSmall: 8,
 };
 
 export default Sizes;

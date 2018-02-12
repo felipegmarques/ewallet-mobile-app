@@ -2,7 +2,7 @@
 
 const AppPalette = {
   CTA: '#4f4f4f',
-  Primary: '#4f4f4f',
+  Primary: 'red',
   Secondary: '#4f4f4f',
   Success: '#4f4f4f',
   Danger: '#4f4f4f',

@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
   label: {
     ...fontMaker({fontFamily: 'Nunito'}, Platform.OS),
     fontSize: Sizes.Small,
-    color: Colors.GrayXDark,
     letterSpacing: 0.05,
   },
   body: {
@@ -67,7 +66,8 @@ export const H2: React.StatelessComponent<HeaderProps> = buildHeader(styles.h2);
 export const H3: React.StatelessComponent<HeaderProps> = buildHeader(styles.h3);
 export const H4: React.StatelessComponent<HeaderProps> = buildHeader(styles.h4);
 
-export const Label: React.StatelessComponent<{}> = ({children}) => <Text style={styles.label}>{children}</Text>;
+export const Label: React.StatelessComponent<{color?: string}> =
+  ({children, color = Colors.GrayXDark}) => <Text style={[styles.label, { color }]}>{children}</Text>;
 export const Body: React.StatelessComponent<{}> = ({children}) => <Text style={styles.body}>{children}</Text>;
 
 export const Money: React.StatelessComponent<{}> = buildMoneyVariant();
