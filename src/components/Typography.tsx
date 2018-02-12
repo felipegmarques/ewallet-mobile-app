@@ -33,6 +33,11 @@ const styles = StyleSheet.create({
     fontSize: Sizes.Small,
     letterSpacing: 0.05,
   },
+  caption: {
+    ...fontMaker({fontFamily: 'Nunito'}, Platform.OS),
+    fontSize: Sizes.XSmall,
+    letterSpacing: 0.05,
+  },
   body: {
     ...fontMaker({fontFamily: 'Nunito'}, Platform.OS),
     fontSize: Sizes.Small,
@@ -68,8 +73,9 @@ export const H4: React.StatelessComponent<HeaderProps> = buildHeader(styles.h4);
 
 export const Label: React.StatelessComponent<{color?: string}> =
   ({children, color = Colors.GrayXDark}) => <Text style={[styles.label, { color }]}>{children}</Text>;
+export const Caption: React.StatelessComponent<{color?: string}> =
+  ({children, color = Colors.GrayXDark}) => <Text style={[styles.caption, { color }]}>{children}</Text>;
 export const Body: React.StatelessComponent<{}> = ({children}) => <Text style={styles.body}>{children}</Text>;
-
 export const Money: React.StatelessComponent<{}> = buildMoneyVariant();
 export const MoneyLarge: React.StatelessComponent<{}> = buildMoneyVariant(styles.moneyLarge);
 export const MoneySmall: React.StatelessComponent<{}> = buildMoneyVariant(styles.moneySmall);

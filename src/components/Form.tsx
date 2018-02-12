@@ -2,8 +2,9 @@ import * as React from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
 import Colors from './Colors';
 import * as FormControlModel from './forms/FormControlModel';
+import * as Validators from './forms/Validators';
 import Sizes from './Spacing';
-import { Label } from './Typography';
+import { Caption, Label } from './Typography';
 
 const styles = StyleSheet.create({
   input: {
@@ -15,6 +16,9 @@ const styles = StyleSheet.create({
   inputUnderline: {
     height: StyleSheet.hairlineWidth,
     backgroundColor: Colors.GrayXDark,
+  },
+  formCaption: {
+    paddingTop: 4,
   },
 });
 
@@ -33,22 +37,39 @@ export class EmailFormControl extends React.Component<Props, FormControlModel.St
   }
 
   public onFocus() {
-    this.setState((prevState) =>
-      FormControlModel.nextState(prevState, { type: 'focus' }));
+    this.nextState({ type: 'focus' });
   }
 
   public onChange(value: string) {
-    this.setState((prevState) =>
-      FormControlModel.nextState(prevState, {type: 'change', value}));
+    this.nextState({type: 'change', value});
   }
 
   public onBlur() {
-    this.setState((prevState) =>
-      FormControlModel.nextState(prevState, { type: 'blur'}));
+    this.nextState({ type: 'blur'});
+  }
+
+  public renderErrors() {
+    const errors = this.state.errors;
+    let errorMsg;
+    if (errors && errors.length !== 0) {
+      const firstError = errors[0];
+      if (firstError === 'required') {
+        errorMsg = 'Esse campo é obrigatório';
+      } else if (firstError === 'invalid-email') {
+        errorMsg = 'Digite um email válido';
+      }
+    }
+    return (<View style={styles.formCaption}>
+        <Caption color='red'>{errorMsg}</Caption>
+    </View>);
   }
 
   public stateColor(state: State) {
-    return this.state.focus ? Colors.Primary : Colors.GrayXDark;
+    if (!this.state.valid) {
+      return Colors.Danger;
+    } else {
+      return this.state.focus ? Colors.Primary: Colors.GrayXDark;
+    }
   }
 
   public render() {
@@ -64,7 +85,12 @@ export class EmailFormControl extends React.Component<Props, FormControlModel.St
         onChangeText={(text) => this.onChange(text)}
         underlineColorAndroid='rgba(0,0,0,0)'/>
       <View style={[styles.inputUnderline, { backgroundColor: stateColor}]}/>
+      <View style={styles.formCaption}>{this.renderErrors()}</View>
     </View>);
+  }
+
+  private nextState(event: FormControlModel.Event) {
+    this.setState((prevState) => FormControlModel.nextState(prevState, event, [Validators.required, Validators.email]));
   }
 
 }

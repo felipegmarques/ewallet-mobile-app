@@ -2,10 +2,10 @@
 
 const AppPalette = {
   CTA: '#4f4f4f',
-  Primary: 'red',
+  Primary: 'green',
   Secondary: '#4f4f4f',
   Success: '#4f4f4f',
-  Danger: '#4f4f4f',
+  Danger: 'red',
 };
 
 const Grayscale = {
