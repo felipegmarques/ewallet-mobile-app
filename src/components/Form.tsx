@@ -22,10 +22,24 @@ const styles = StyleSheet.create({
   },
 });
 
-type Props = any;
+interface Props {
+  label: string;
+  placeholder?: string;
+  secureTextEntry?: boolean;
+  keyboardType?: any;
+  renderErrors?: (state: FormControlModel.State) => any;
+  validators?: FormControlModel.Validator[];
+}
 type State = any;
 
-export class EmailFormControl extends React.Component<Props, FormControlModel.State> {
+export class FormControl extends React.Component<Props, FormControlModel.State> {
+
+  public static defaultProps: Partial<Props> = {
+    keyboardType: 'default',
+    secureTextEntry: false,
+    renderErrors: (state: FormControlModel.State) => {},
+    validators: [],
+  };
 
   constructor(props: Props) {
     super(props);
@@ -36,20 +50,68 @@ export class EmailFormControl extends React.Component<Props, FormControlModel.St
     };
   }
 
-  public onFocus() {
-    this.nextState({ type: 'focus' });
+  public nextState(event: FormControlModel.Event) {
+    this.setState((prevState) =>
+      FormControlModel.nextState(prevState, event, this.props.validators));
   }
 
-  public onChange(value: string) {
-    this.nextState({type: 'change', value});
+  public stateColor(state: State) {
+    if (!this.state.valid) {
+      return Colors.Danger;
+    } else {
+      return this.state.focus ? Colors.Primary : Colors.GrayXDark;
+    }
   }
 
-  public onBlur() {
-    this.nextState({ type: 'blur'});
+  public render() {
+    const stateColor = this.stateColor(this.state);
+    const renderErrors = this.props.renderErrors as (state: FormControlModel.State) => any;
+    return (<View>
+      <Label color={stateColor}>{this.props.label}</Label>
+      <TextInput
+        style={styles.input}
+        keyboardType={this.props.keyboardType}
+        placeholder={this.props.placeholder}
+        onFocus={() => this.nextState({type: 'focus'})}
+        onBlur={() => this.nextState({type: 'blur'})}
+        onChangeText={(value) => this.nextState({type: 'change', value })}
+        secureTextEntry={this.props.secureTextEntry}
+        underlineColorAndroid='rgba(0,0,0,0)'/>
+      <View style={[styles.inputUnderline, { backgroundColor: stateColor}]}/>
+      <View style={styles.formCaption}>{renderErrors(this.state)}</View>
+    </View>);
   }
 
-  public renderErrors() {
-    const errors = this.state.errors;
+}
+
+export class PasswordFormControl extends React.Component<any, any> {
+  public renderErrors(state: FormControlModel.State) {
+    const errors = state.errors;
+    let errorMsg;
+    if (errors && errors.length !== 0) {
+      const firstError = errors[0];
+      if (firstError === 'required') {
+        errorMsg = 'Digite uma senha';
+      }
+    }
+    return (<View style={styles.formCaption}>
+        <Caption color='red'>{errorMsg}</Caption>
+    </View>);
+  }
+
+  public render() {
+    return (<FormControl
+      label='Password'
+      validators={[Validators.required]}
+      renderErrors={this.renderErrors}
+      secureTextEntry={true}/>);
+  }
+}
+
+export class EmailFormControl extends React.Component<any, any> {
+
+  public renderErrors(state: FormControlModel.State) {
+    const errors = state.errors;
     let errorMsg;
     if (errors && errors.length !== 0) {
       const firstError = errors[0];
@@ -59,38 +121,18 @@ export class EmailFormControl extends React.Component<Props, FormControlModel.St
         errorMsg = 'Digite um email válido';
       }
     }
+
     return (<View style={styles.formCaption}>
         <Caption color='red'>{errorMsg}</Caption>
     </View>);
   }
 
-  public stateColor(state: State) {
-    if (!this.state.valid) {
-      return Colors.Danger;
-    } else {
-      return this.state.focus ? Colors.Primary: Colors.GrayXDark;
-    }
-  }
-
   public render() {
-    const stateColor = this.stateColor(this.state);
-    return (<View>
-      <Label color={stateColor}>Email</Label>
-      <TextInput
-        style={styles.input}
-        keyboardType='email-address'
-        placeholder={'john.doe@gmail.com'}
-        onFocus={() => this.onFocus()}
-        onBlur={() => this.onBlur()}
-        onChangeText={(text) => this.onChange(text)}
-        underlineColorAndroid='rgba(0,0,0,0)'/>
-      <View style={[styles.inputUnderline, { backgroundColor: stateColor}]}/>
-      <View style={styles.formCaption}>{this.renderErrors()}</View>
-    </View>);
+    return(<FormControl
+      label='Email'
+      placeholder='john.doe@email.com'
+      keyboardType='email-address'
+      renderErrors={this.renderErrors}
+      validators={[Validators.required, Validators.email]}/>);
   }
-
-  private nextState(event: FormControlModel.Event) {
-    this.setState((prevState) => FormControlModel.nextState(prevState, event, [Validators.required, Validators.email]));
-  }
-
 }

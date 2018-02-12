@@ -4,8 +4,8 @@ describe('Validators', () => {
     expect(Validators.required('', true)).toBe('');
   });
 
-  it('Required: should be valid if pristine is false but value is present', () => {
-    expect(Validators.required('value', false)).toBe('');
+  it('Required: should be valid if pristine is true but value is present', () => {
+    expect(Validators.required(undefined, true)).toBe('');
   });
 
   it('Required:  should be invalid if value is empty string', () => {

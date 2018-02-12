@@ -12,10 +12,10 @@ export interface Event {
   value?: string;
 }
 
-type Validator = (value?: string, pristine?: boolean) => string;
+export type Validator = (value?: string, pristine?: boolean) => string;
 
 const validate = (value: string | undefined, pristine: boolean, validators: Validator[]) => {
-  const errors = validators.map((validator) => validator(value, false))
+  const errors = validators.map((validator) => validator(value, pristine))
       .filter((val) => val !== undefined && val !== '');
   const valid = errors.length === 0;
   return { errors, valid };
