@@ -54,17 +54,19 @@ const styles = StyleSheet.create({
   moneySmall: { fontSize: Sizes.Regular },
 });
 
-const buildHeader = (style: TextStyle): React.StatelessComponent<{onPress?: (event: any) => void}> => {
-  return ({onPress, children}) => <Text onPress={onPress} style={style}>{children}</Text>;
-};
-
 const buildMoneyVariant = (variantStyle: TextStyle = {}): React.StatelessComponent<{}> => {
   return ({children}) => <Text style={[styles.money, variantStyle]} >{children}</Text>;
 };
 
 interface HeaderProps {
   onPress?: (event: any) => void;
+  color?: string;
 }
+const buildHeader = (style: TextStyle, defaultColor = Colors.GrayXDark):
+  React.StatelessComponent<HeaderProps> => {
+  return ({onPress, children, color = defaultColor}) =>
+    <Text onPress={onPress} style={[style, { color }]}>{children}</Text>;
+};
 
 export const H1: React.StatelessComponent<HeaderProps> = buildHeader(styles.h1);
 export const H2: React.StatelessComponent<HeaderProps> = buildHeader(styles.h2);
