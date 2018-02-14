@@ -22,13 +22,11 @@ const Grayscale = {
   Gray: '#999999',
   GrayLight: '#BBBBBB',
   GrayXLight: '#DDDDDD',
-  White: '#FAFAFA',
+  White: '#FDFDFD',
 };
 
-const Colors = {
+export const Colors = {
   ...BrandPalette,
   ...AppPalette,
   ...Grayscale,
 };
-
-export default Colors;

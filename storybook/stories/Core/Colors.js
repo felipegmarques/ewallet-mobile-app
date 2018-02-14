@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, View, FlatList, Text, StyleSheet } from 'react-native';
-import Colors from '../../../lib/new_components/core/Colors';
+import { Colors } from '../../../lib/new_components/core';
 
 const styles = StyleSheet.create({
   container: {

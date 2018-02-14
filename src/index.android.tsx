@@ -6,27 +6,54 @@ import {
   Text,
   View,
 } from 'react-native';
-import Colors from './components/Colors';
-import { H1 } from './components/Typography';
+
+import { Appbar, AppbarTitle } from './new_components/Appbar';
+import { Colors, FontSize, H3, Sizes  } from './new_components/core';
+import { ModalSelector } from './new_components/ModalSelector';
 
 const styles = StyleSheet.create({
-  appbar: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingLeft: 16,
-    paddingRight: 16,
-    height: 56,
-    backgroundColor: Colors.GrayXDark,
+  item: {
+    fontSize: FontSize.Small,
+    color: Colors.GrayXDark,
+    paddingVertical: Sizes.Regular,
   },
 });
 
-export default class MyAwesomeProject extends React.Component<object, object> {
+export default class MyAwesomeProject extends React.Component<any, any> {
+
+  public constructor(props: any) {
+    super(props);
+    this.state = { visible: false, currentMonth: 'Setembro/2017' };
+  }
+
+  public toggleMonthSelector() {
+    this.setState((prevState: any) => ({...prevState, visible: !prevState.visible}));
+  }
+
+  public renderItem(item: any, onPress: () => void) {
+    return (<Text style={styles.item} onPress={onPress}>{item.key}</Text>);
+  }
+
+  public onItemSelected(item: any) {
+    this.setState((prevState: any) => ({...prevState, visible: false, currentMonth: item.key}));
+  }
+
   public render() {
     return (
       <View>
-        <View style={styles.appbar}>
-          <H1 color={Colors.White}>Setembro/2017</H1>
-        </View>
+        <Appbar renderTitle={() =>
+          (<AppbarTitle onPress={() => this.toggleMonthSelector()}>{this.state.currentMonth}</AppbarTitle>)}/>
+        <ModalSelector
+          visible={this.state.visible}
+          data={[
+            {key: 'Setembro/2017'},
+            {key: 'Outubro/2017'},
+            {key: 'Novembro/2017'},
+            {key: 'Dezembro/2017'}]}
+          renderTitle={() => (<H3>Escolha o mês</H3>)}
+          renderItem={this.renderItem}
+          onItemSelected={(item) => this.onItemSelected(item)}
+          onRequestClose={() => this.toggleMonthSelector()}/>
       </View>
     );
   }

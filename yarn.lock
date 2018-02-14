@@ -193,9 +193,9 @@
   version "9.3.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.3.0.tgz#3a129cda7c4e5df2409702626892cb4b96546dd5"
 
-"@types/react-native@0.51.9":
-  version "0.51.9"
-  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.51.9.tgz#a2435957444aa3205387a162b72374578f303b43"
+"@types/react-native@0.52.10":
+  version "0.52.10"
+  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.52.10.tgz#cfae002fc4782dcc02be53e742eb6e0446c5a1b8"
   dependencies:
     "@types/react" "*"
 
