@@ -1,3 +1,4 @@
+import { HorizontalLine } from 'app/new_components/HorizontalLine';
 import * as React from 'react';
 import {
   AppRegistry,
@@ -11,7 +12,6 @@ import {
 import { Appbar, AppbarTitle } from './new_components/Appbar';
 import { Card } from './new_components/Card';
 import { Colors, FontSize, H3, Sizes  } from './new_components/core';
-import { HorizontalLine } from './new_components/HorizontalLine';
 import { MainCard } from './new_components/MainCard';
 import { ModalSelector } from './new_components/ModalSelector';
 
