@@ -10,5 +10,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export const HorizontalLine: React.StatelessComponent<{color: string}> =
-  ({color, ...props}) => (<View {...props} style={[styles.horizontalLine, {backgroundColor: color}]}/>);
+export const HorizontalLine: React.StatelessComponent<{color: string, width?: number}> =
+  ({color, width, ...props}) => (<View {...props} style={[styles.horizontalLine, {width, backgroundColor: color}]}/>);

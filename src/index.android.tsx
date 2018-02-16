@@ -1,14 +1,18 @@
 import * as React from 'react';
 import {
   AppRegistry,
+  FlatList,
   Platform,
+  ScrollView,
   StyleSheet,
   Text,
-  View,
 } from 'react-native';
 
 import { Appbar, AppbarTitle } from './new_components/Appbar';
+import { Card } from './new_components/Card';
 import { Colors, FontSize, H3, Sizes  } from './new_components/core';
+import { HorizontalLine } from './new_components/HorizontalLine';
+import { MainCard } from './new_components/MainCard';
 import { ModalSelector } from './new_components/ModalSelector';
 
 const styles = StyleSheet.create({
@@ -40,7 +44,7 @@ export default class MyAwesomeProject extends React.Component<any, any> {
 
   public render() {
     return (
-      <View>
+      <ScrollView style={{backgroundColor: Colors.GrayXLight, flex: 1}}>
         <Appbar renderTitle={() =>
           (<AppbarTitle onPress={() => this.toggleMonthSelector()}>{this.state.currentMonth}</AppbarTitle>)}/>
         <ModalSelector
@@ -54,7 +58,14 @@ export default class MyAwesomeProject extends React.Component<any, any> {
           renderItem={this.renderItem}
           onItemSelected={(item) => this.onItemSelected(item)}
           onRequestClose={() => this.toggleMonthSelector()}/>
-      </View>
+        <MainCard/>
+        <Text style={{fontSize: FontSize.XSmall,
+            marginHorizontal: Sizes.Regular, marginVertical: Sizes.Small}}>MOVIMENTAÇÕES</Text>
+        <FlatList
+          data={[{key: 1}, {key: 2}, {key: 3}]}
+          renderItem={({item}) => (<Card />)}
+          ItemSeparatorComponent={() => (<HorizontalLine color={Colors.Gray}/>)}/>
+      </ScrollView>
     );
   }
 }
