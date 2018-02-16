@@ -6,6 +6,7 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  View,
 } from 'react-native';
 
 import {
@@ -54,7 +55,7 @@ export default class MyAwesomeProject extends React.Component<any, any> {
             {key: 'Novembro/2017'},
             {key: 'Dezembro/2017'}];
     return (
-      <ScrollView style={{backgroundColor: Colors.GrayXLight, flex: 1}}>
+      <View style={{ flex: 1 }}>
         <Appbar renderTitle={() =>
           (<AppbarTitle onPress={() => this.toggleMonthSelector()}>{this.state.currentMonth}</AppbarTitle>)}/>
         <FullScreenModal visible={this.state.visible} onRequestClose={() => this.toggleMonthSelector()}>
@@ -65,7 +66,8 @@ export default class MyAwesomeProject extends React.Component<any, any> {
               onItemSelected={(item) => this.onItemSelected(item)}
               />
         </FullScreenModal>
-        <SectionWithGutter>
+      <ScrollView style={{backgroundColor: Colors.GrayXLight, flex: 1}}>
+       <SectionWithGutter>
             <MainCard/>
         </SectionWithGutter>
         <Section>
@@ -77,6 +79,7 @@ export default class MyAwesomeProject extends React.Component<any, any> {
             ItemSeparatorComponent={() => (<HorizontalLine color={Colors.Gray}/>)}/>
         </Section>
       </ScrollView>
+      </View>
     );
   }
 }
