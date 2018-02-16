@@ -1,4 +1,3 @@
-import { HorizontalLine } from 'app/new_components/HorizontalLine';
 import * as React from 'react';
 import {
   AppRegistry,
@@ -9,11 +8,18 @@ import {
   Text,
 } from 'react-native';
 
-import { Appbar, AppbarTitle } from './new_components/Appbar';
-import { Card } from './new_components/Card';
-import { Colors, FontSize, H3, Sizes  } from './new_components/core';
-import { MainCard } from './new_components/MainCard';
-import { ModalSelector } from './new_components/ModalSelector';
+import {
+  Appbar,
+  AppbarTitle,
+  Card,
+  FullScreenModal,
+  HorizontalLine,
+  ListSelector,
+  MainCard,
+  Section,
+  SectionWithGutter  } from 'app/new_components';
+import { Colors, FontSize, Sizes } from 'app/new_components/core';
+import { H3 } from 'app/new_components/atoms';
 
 const styles = StyleSheet.create({
   item: {
@@ -43,28 +49,33 @@ export default class MyAwesomeProject extends React.Component<any, any> {
   }
 
   public render() {
+    const data = [{key: 'Setembro/2017'},
+            {key: 'Outubro/2017'},
+            {key: 'Novembro/2017'},
+            {key: 'Dezembro/2017'}];
     return (
       <ScrollView style={{backgroundColor: Colors.GrayXLight, flex: 1}}>
         <Appbar renderTitle={() =>
           (<AppbarTitle onPress={() => this.toggleMonthSelector()}>{this.state.currentMonth}</AppbarTitle>)}/>
-        <ModalSelector
-          visible={this.state.visible}
-          data={[
-            {key: 'Setembro/2017'},
-            {key: 'Outubro/2017'},
-            {key: 'Novembro/2017'},
-            {key: 'Dezembro/2017'}]}
-          renderTitle={() => (<H3>Escolha o mês</H3>)}
-          renderItem={this.renderItem}
-          onItemSelected={(item) => this.onItemSelected(item)}
-          onRequestClose={() => this.toggleMonthSelector()}/>
-        <MainCard/>
-        <Text style={{fontSize: FontSize.XSmall,
-            marginHorizontal: Sizes.Regular, marginVertical: Sizes.Small}}>MOVIMENTAÇÕES</Text>
-        <FlatList
-          data={[{key: 1}, {key: 2}, {key: 3}]}
-          renderItem={({item}) => (<Card />)}
-          ItemSeparatorComponent={() => (<HorizontalLine color={Colors.Gray}/>)}/>
+        <FullScreenModal visible={this.state.visible} onRequestClose={() => this.toggleMonthSelector()}>
+            <ListSelector
+              renderTitle={() => (<H3>Escolha o mês</H3>)}
+              data={data}
+              renderItem={this.renderItem}
+              onItemSelected={(item) => this.onItemSelected(item)}
+              />
+        </FullScreenModal>
+        <SectionWithGutter>
+            <MainCard/>
+        </SectionWithGutter>
+        <Section>
+          <Text style={{fontSize: FontSize.XSmall,
+              marginHorizontal: Sizes.Regular, marginBottom: Sizes.Small}}>MOVIMENTAÇÕES</Text>
+          <FlatList
+            data={[{key: 1}, {key: 2}, {key: 3}]}
+            renderItem={({item}) => (<Card />)}
+            ItemSeparatorComponent={() => (<HorizontalLine color={Colors.Gray}/>)}/>
+        </Section>
       </ScrollView>
     );
   }

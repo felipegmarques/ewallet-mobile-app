@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+
 import { Colors, FontSize, Sizes } from './core';
+import { H2, H4, MoneyRegular, MoneyLarge } from './atoms';
 import { HorizontalLine } from './HorizontalLine';
 
 const styles = StyleSheet.create({
   cardContainer: {
-    marginVertical: Sizes.Small,
-    marginHorizontal: Sizes.Small,
     paddingVertical: Sizes.Regular,
     borderRadius: Sizes.XSmall,
     backgroundColor: Colors.White,
@@ -34,19 +34,19 @@ export class MainCard extends React.Component {
     return (
       <View style={styles.cardContainer}>
         <View style={styles.mainContent}>
-          <Text style={{ fontSize: FontSize.XLarge }}>-406.60</Text>
-          <Text style={{marginBottom: Sizes.Regular, fontSize: FontSize.Small}}>SALDO ATUAL</Text>
+          <MoneyLarge> -406.60</MoneyLarge>
+          <H2>SALDO ATUAL</H2>
           <HorizontalLine color={Colors.Black} width={Sizes.XLarge}/>
           <Text style={{marginTop: Sizes.Regular}}>{'Anterior:  -902.22'}</Text>
         </View>
         <View style={styles.subContent}>
           <View style={styles.secondaryCard}>
-            <Text style={{fontSize: FontSize.XSmall}}>CRÉDITOS</Text>
-            <Text style={{fontSize: FontSize.Regular}}>0,63k</Text>
+            <H4>CRÉDITOS</H4>
+            <MoneyRegular>0,63k</MoneyRegular>
           </View>
           <View style={styles.secondaryCard}>
-            <Text style={{fontSize: FontSize.XSmall}}>DÉBITOS</Text>
-            <Text style={{fontSize: FontSize.Regular}}>1,12k</Text>
+            <H4>DÉBITOS</H4>
+            <MoneyRegular>1,12k</MoneyRegular>
           </View>
         </View>
       </View>);

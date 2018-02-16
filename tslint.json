@@ -4,8 +4,8 @@
         "tslint:recommended"
     ],
     "jsRules": {},
-    "ordered-imports": false,
     "rules": {
+        "imports-order": true,
         "interface-name": [true, "never-prefix"],
         "max-classes-per-file": false,
         "max-line-length": {
@@ -14,7 +14,8 @@
         "no-console": false,
         "no-empty": false,
         "object-literal-sort-keys": false,
+        "ordered-imports": false,
         "quotemark": [true, "single"]
     },
-    "rulesDirectory": []
+    "rulesDirectory": ["lint"]
 }

@@ -12,6 +12,7 @@
     "build:tsc": "tsc",
     "react:clean": "rimraf lib",
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
+    "build:lint_rules": "tsc lint/*.ts",
     "watch:test": "jest --watch",
     "test": "jest"
   },

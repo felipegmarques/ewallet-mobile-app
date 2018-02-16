@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Colors, FontSize, Sizes } from './core';
+import { H4, MoneyRegular } from './atoms';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,12 +17,10 @@ export class Card extends React.Component {
     return (
       <View style={styles.container}>
         <View style={{ flex: 1 }}>
-          <Text style={{fontSize: FontSize.XSmall}}>SORVETE</Text>
-          <Text style={{ fontSize: FontSize.Regular}}> -2.20 </Text>
+          <H4>SORVETE</H4>
+          <MoneyRegular> -2.20 </MoneyRegular>
         </View>
-        <View>
-          <Text> Ontem </Text>
-        </View>
+        <Text> Ontem </Text>
       </View>
     );
   }
