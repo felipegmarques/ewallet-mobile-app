@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { StackNavigator } from 'react-navigation';
 import {
   AppRegistry,
   FlatList,
@@ -22,6 +23,7 @@ import {
   SectionWithGutter  } from 'app/new_components';
 import { Colors, FontSize, Sizes } from 'app/new_components/core';
 import { H3 } from 'app/new_components/atoms';
+import { EntryForm } from './EntryForm';
 
 const styles = StyleSheet.create({
   fabPosition: {
@@ -38,7 +40,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class MyAwesomeProject extends React.Component<any, any> {
+class MyAwesomeProject extends React.Component<any, any> {
+
+  public static navigationOptions = {
+    header: null,
+  };
 
   public constructor(props: any) {
     super(props);
@@ -89,10 +95,25 @@ export default class MyAwesomeProject extends React.Component<any, any> {
           </Section>
         </ScrollView>
         <FloatActionButton style={styles.fabPosition}
-          onPress={() => console.log('Hello')}>+</FloatActionButton>
+          onPress={() => this.props.navigation.navigate('Entry')}>+</FloatActionButton>
       </View>
     );
   }
 }
 
-AppRegistry.registerComponent('MyAwesomeProject', () => MyAwesomeProject);
+const RootStack = StackNavigator({
+  Home: {
+    screen: MyAwesomeProject,
+  },
+  Entry: {
+    screen: EntryForm,
+  },
+}, { headerMode: 'screen'});
+
+export default class App extends React.Component {
+  public render() {
+    return <RootStack/>;
+  }
+}
+
+AppRegistry.registerComponent('MyAwesomeProject', () => App);
