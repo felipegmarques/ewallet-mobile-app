@@ -18,7 +18,7 @@ interface Props {
   renderTitle: () => React.ReactElement<any> | null;
 }
 
-export const AppbarTitle: React.StatelessComponent<{ onPress: () => void}> =
+export const AppbarTitle: React.StatelessComponent<{ onPress?: () => void}> =
   (props) => (<Text {...props} style={styles.appbarText}/>);
 
 export class Appbar extends React.Component<Props> {

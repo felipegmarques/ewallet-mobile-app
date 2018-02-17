@@ -15,6 +15,9 @@ const styles = StyleSheet.create({
   h4: {
     fontSize: FontSize.XSmall,
   },
+  label: {
+    fontSize: FontSize.Small,
+  },
   moneyLarge: {
     fontSize: FontSize.XLarge,
   },
@@ -37,3 +40,6 @@ export const MoneyRegular: React.StatelessComponent<{}> =
 
 export const MoneyLarge: React.StatelessComponent<{}> =
   (props) => (<Text {...props} style={styles.moneyLarge}/>);
+
+export const Label: React.StatelessComponent<{style?:  any}> =
+  ({style, ...props}) => (<Text {...props} style={[style, styles.label]} />)
