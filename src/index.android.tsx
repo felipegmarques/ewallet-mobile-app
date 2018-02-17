@@ -13,6 +13,7 @@ import {
   Appbar,
   AppbarTitle,
   Card,
+  FloatActionButton,
   FullScreenModal,
   HorizontalLine,
   ListSelector,
@@ -23,6 +24,13 @@ import { Colors, FontSize, Sizes } from 'app/new_components/core';
 import { H3 } from 'app/new_components/atoms';
 
 const styles = StyleSheet.create({
+  fabPosition: {
+    marginRight: Sizes.Regular,
+    marginBottom: Sizes.Regular,
+    bottom: 0,
+    right: 0,
+    position: 'absolute',
+  },
   item: {
     fontSize: FontSize.Small,
     color: Colors.GrayXDark,
@@ -54,6 +62,7 @@ export default class MyAwesomeProject extends React.Component<any, any> {
             {key: 'Outubro/2017'},
             {key: 'Novembro/2017'},
             {key: 'Dezembro/2017'}];
+    console.log(styles.fabPosition);
     return (
       <View style={{ flex: 1 }}>
         <Appbar renderTitle={() =>
@@ -66,19 +75,21 @@ export default class MyAwesomeProject extends React.Component<any, any> {
               onItemSelected={(item) => this.onItemSelected(item)}
               />
         </FullScreenModal>
-      <ScrollView style={{backgroundColor: Colors.GrayXLight, flex: 1}}>
-       <SectionWithGutter>
-            <MainCard/>
-        </SectionWithGutter>
-        <Section>
-          <Text style={{fontSize: FontSize.XSmall,
-              marginHorizontal: Sizes.Regular, marginBottom: Sizes.Small}}>MOVIMENTAÇÕES</Text>
-          <FlatList
-            data={[{key: 1}, {key: 2}, {key: 3}]}
-            renderItem={({item}) => (<Card />)}
-            ItemSeparatorComponent={() => (<HorizontalLine color={Colors.Gray}/>)}/>
-        </Section>
-      </ScrollView>
+        <ScrollView style={{backgroundColor: Colors.GrayXLight, flex: 1}}>
+        <SectionWithGutter>
+              <MainCard/>
+          </SectionWithGutter>
+          <Section>
+            <Text style={{fontSize: FontSize.XSmall,
+                marginHorizontal: Sizes.Regular, marginBottom: Sizes.Small}}>MOVIMENTAÇÕES</Text>
+            <FlatList
+              data={[{key: 1}, {key: 2}, {key: 3}]}
+              renderItem={({item}) => (<Card />)}
+              ItemSeparatorComponent={() => (<HorizontalLine color={Colors.Gray}/>)}/>
+          </Section>
+        </ScrollView>
+        <FloatActionButton style={styles.fabPosition}
+          onPress={() => console.log('Hello')}>+</FloatActionButton>
       </View>
     );
   }
