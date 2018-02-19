@@ -1,4 +1,5 @@
 export * from './atoms';
+export * from './molecules';
 export * from './Appbar';
 export * from './Card';
 export * from './HorizontalLine';
