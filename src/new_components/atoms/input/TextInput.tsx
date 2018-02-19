@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 });
 
 interface TextInputProps extends TextInputProperties {
-  color: string,
+  color: string;
 }
 
 export const EW_TextInput: React.StatelessComponent<TextInputProps>  =
