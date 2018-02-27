@@ -22,13 +22,11 @@ interface TextInputProps extends TextInputProperties {
 }
 
 export const EW_TextInput: React.StatelessComponent<TextInputProps>  =
-  ({color, ...props}) => {
-    console.log(props);
-    return (
+  ({color, ...props}) => (
       <View>
         <TextInput
           {...props}
           style={styles.input}
           underlineColorAndroid='rgba(0,0,0,0)'/>
         <View style={[styles.inputUnderline, { backgroundColor: color}]}/>
-      </View>)};
+      </View>);

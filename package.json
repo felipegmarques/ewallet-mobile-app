@@ -56,7 +56,6 @@
     "typescript": "2.6.2"
   },
   "jest": {
-    "preset": "react-native",
     "moduleFileExtensions": [
       "ts",
       "tsx",

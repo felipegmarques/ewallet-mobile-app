@@ -50,11 +50,21 @@ describe('FormControl Model', () => {
   it('Change event: updates value to \'\' when \'\'', () => {
     const expectedState = { valid: true, value: '', pristine: false };
     const previousState = { valid: true, pristine: true, focus: true};
-
     const actualState = FormControlModel.nextState(previousState, { type: 'change', value: '' });
 
     expect(actualState).toMatchObject(expectedState);
   });
+
+  it('Change event: should call Mask clean and apply', () => {
+    const state = { valid: true, value: '', pristine: false, focus: false};
+    const clean = jest.fn();
+    const apply = jest.fn();
+
+    FormControlModel.nextState(state, { type: 'change', value: 'a'}, [], { clean, apply });
+
+    expect(clean).toBeCalledWith('a');
+    expect(apply).toBeCalledWith('a');
+  })
 
   it('Blur event: should validate when looses focus', () => {
     const state = { valid: true, pristine: true, focus: true };
@@ -72,5 +82,6 @@ describe('FormControl Model', () => {
 
     expect(actualState).toMatchObject(expectedState);
   });
+
 
 });

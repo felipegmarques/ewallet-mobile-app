@@ -13,6 +13,10 @@ export interface Event {
 }
 
 export type Validator = (value?: string, pristine?: boolean) => string;
+export interface Mask {
+  clean: (val: any) => any;
+  apply: (val: any) => any;
+}
 
 const validate = (value: string | undefined, pristine: boolean, validators: Validator[]) => {
   const errors = validators.map((validator) => validator(value, pristine))
@@ -21,10 +25,14 @@ const validate = (value: string | undefined, pristine: boolean, validators: Vali
   return { errors, valid };
 };
 
-export const nextState = (state: State, {type, value}: Event, validators: Validator[] = []) => {
+export const nextState = (state: State,
+  {type, value}: Event,
+  validators: Validator[] = [],
+  {clean, apply}: Mask = { clean: (val: any) => val, apply: (val: any) => val}) => {
+
   if (type === 'change') {
-    const { valid, errors } = validate(value, false, validators);
-    return { ...state, valid, pristine: false, value, errors };
+    const { valid, errors } = validate(clean(value), false, validators);
+    return { ...state, valid, pristine: false, value: apply(value), errors };
   } else if (type === 'blur') {
     const { valid, errors } = validate(state.value, state.pristine, validators);
     return { ...state, focus: false, valid, errors };

@@ -4,6 +4,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import {Colors, FontSize, Sizes } from 'app/new_components/core';
 
 const styles = StyleSheet.create({
+  caption: {
+    fontSize: FontSize.XSmall,
+  },
   h2: {
     marginBottom: Sizes.Regular,
     fontSize: FontSize.Small},
@@ -43,3 +46,6 @@ export const MoneyLarge: React.StatelessComponent<{}> =
 
 export const Label: React.StatelessComponent<{style?:  any}> =
   ({style, ...props}) => (<Text {...props} style={[style, styles.label]} />)
+
+export const Caption: React.StatelessComponent<{style?: any}> =
+  ({style, ...props}) => (<Text {...props} style={[style, styles.caption]}/>)
