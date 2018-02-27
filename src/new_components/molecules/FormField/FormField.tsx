@@ -19,6 +19,7 @@ interface Props {
   caption?: (state: State) => string;
   validators?: Validator[];
   mask?: Mask;
+  editable?: boolean;
   onChange: (state: State) => void;
   fieldState: State;
 }
@@ -30,6 +31,7 @@ export class FormField extends React.Component<Props> {
     secureTextEntry: false,
     caption: (state: State) => '',
     validators: [],
+    editable: true,
     fieldState: {
       valid: true,
       focus: false,
@@ -39,7 +41,6 @@ export class FormField extends React.Component<Props> {
   };
 
   public nextState(event: Event) {
-    console.log(event);
     this.props.onChange(nextState(this.props.fieldState, event, this.props.validators, this.props.mask))
   }
 
@@ -58,6 +59,7 @@ export class FormField extends React.Component<Props> {
           onChangeText={(value: any) => this.nextState({type: 'change', value })}
           secureTextEntry={this.props.secureTextEntry}
           placeholder={this.props.placeholder}
+          editable={this.props.editable}
           color={color}
           value={this.props.fieldState.value}/>
         <View style={styles.formCaption}>

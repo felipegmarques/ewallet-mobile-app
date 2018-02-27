@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { StackNavigator } from 'react-navigation';
-import { View, Button } from 'react-native';
+import { KeyboardAvoidingView, View, Button } from 'react-native';
 
 import * as Validators from 'app/domain/validators';
 import * as Masks from 'app/domain/mask';
-import { Appbar, AppbarTitle, FormField } from 'app/new_components';
+import { Appbar, AppbarTitle, DateField, FormField } from 'app/new_components';
 import { Colors, Sizes } from 'app/new_components/core';
 
 export class EntryForm extends React.Component<any, any> {
@@ -54,6 +54,11 @@ export class EntryForm extends React.Component<any, any> {
             mask={Masks.MoneyMask}
             fieldState={this.state.amount}
             placeholder='Digite o valor do movimento'/>
+          <DateField
+            label='Data'
+            onChange={(state) => this.nextState('date', state)}
+            mask={Masks.dateMaskBuilder('YYYY/MM/DD')}
+            fieldState={this.state.date} />
           <View style={{marginTop: Sizes.Regular}}>
             <Button title='Salvar' onPress={() => this.submit(this.state)}/>
           </View>

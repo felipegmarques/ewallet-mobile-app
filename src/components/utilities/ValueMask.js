@@ -3,7 +3,6 @@ export const applyMask = (value, mask) => {
   let valueIndex = 0;
   let newValue = '';
   while (valueIndex < value.length) {
-    console.log('Before ' + newValue);
     let maskCharacter = mask.charAt(maskIndex);
     if (maskCharacter === "X") {
       let valueCharacter = value.charAt(valueIndex++);
@@ -15,7 +14,6 @@ export const applyMask = (value, mask) => {
       newValue = newValue + maskCharacter;
       maskIndex++;
     }
-    console.log('After ' + newValue);
   }
   return newValue;
 }

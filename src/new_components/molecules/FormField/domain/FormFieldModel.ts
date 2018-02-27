@@ -8,7 +8,7 @@ export interface State {
 
 export interface Event {
   type: string;
-  value?: string;
+  value?: any;
 }
 
 export type Validator = (value?: string, pristine?: boolean) => string;

@@ -68,7 +68,6 @@ class MyAwesomeProject extends React.Component<any, any> {
             {key: 'Outubro/2017'},
             {key: 'Novembro/2017'},
             {key: 'Dezembro/2017'}];
-    console.log(styles.fabPosition);
     return (
       <View style={{ flex: 1 }}>
         <Appbar renderTitle={() =>

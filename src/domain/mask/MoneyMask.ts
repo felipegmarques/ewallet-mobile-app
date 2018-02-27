@@ -14,6 +14,7 @@ export const MoneyMask = {
       }
     }, {acc: '', leadingZero: true}).acc;
   },
+
   apply: (value: string) => {
     let positiveValue = value;
     if (isNegative(value)) {
