@@ -1,6 +1,5 @@
 import 'jest';
 import { MoneyMask } from '../MoneyMask';
-import { Money } from 'app/components/Typography';
 
 describe('Money Mask', () => {
   it('should clean masked value', () => {

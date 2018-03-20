@@ -20,9 +20,9 @@ import {
   ListSelector,
   MainCard,
   Section,
-  SectionWithGutter  } from 'app/new_components';
-import { Colors, FontSize, Sizes } from 'app/new_components/core';
-import { H3 } from 'app/new_components/atoms';
+  SectionWithGutter  } from 'app/components';
+import { Colors, FontSize, Sizes } from 'app/components/core';
+import { H3 } from 'app/components/atoms';
 import { EntryForm } from './EntryForm';
 
 const styles = StyleSheet.create({

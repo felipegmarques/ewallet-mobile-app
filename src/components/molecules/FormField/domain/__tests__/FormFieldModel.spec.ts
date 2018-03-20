@@ -1,7 +1,7 @@
 import 'jest';
-import * as FormControlModel from '../FormControlModel';
+import * as FormFieldModel from '../FormFieldModel';
 
-describe('FormControl Model', () => {
+describe('FormFiedlModel', () => {
 
   // Mock Validator
   let mockValidator: () => string;
@@ -15,7 +15,7 @@ describe('FormControl Model', () => {
   it('Focus event: should not validate', () => {
     const state = { valid: true, pristine: true, focus: false };
 
-    FormControlModel.nextState(state, { type: 'focus' }, [mockValidator]);
+    FormFieldModel.nextState(state, { type: 'focus' }, [mockValidator]);
 
     expect(mockValidator).not.toBeCalled();
   });
@@ -24,7 +24,7 @@ describe('FormControl Model', () => {
     const expectedState = { valid: true, focus: true, pristine: true};
     const previousState = { valid: true, pristine: true, focus: false};
 
-    const actualState = FormControlModel.nextState(previousState, { type: 'focus' });
+    const actualState = FormFieldModel.nextState(previousState, { type: 'focus' });
 
     expect(actualState).toMatchObject(expectedState);
 
@@ -33,7 +33,7 @@ describe('FormControl Model', () => {
   it('Change event: should validate', () => {
     const state = { valid: true, pristine: true, focus: true };
 
-    FormControlModel.nextState(state, {type: 'change', value: ''}, [mockValidator]);
+    FormFieldModel.nextState(state, {type: 'change', value: ''}, [mockValidator]);
 
     expect(mockValidator).toBeCalled();
   });
@@ -42,7 +42,7 @@ describe('FormControl Model', () => {
     const expectedState = { valid: true, value: 'newvalue', pristine: false };
     const previousState = { valid: true, pristine: true, focus: true};
 
-    const actualState = FormControlModel.nextState(previousState, { type: 'change', value: 'newvalue' });
+    const actualState = FormFieldModel.nextState(previousState, { type: 'change', value: 'newvalue' });
 
     expect(actualState).toMatchObject(expectedState);
   });
@@ -50,7 +50,7 @@ describe('FormControl Model', () => {
   it('Change event: updates value to \'\' when \'\'', () => {
     const expectedState = { valid: true, value: '', pristine: false };
     const previousState = { valid: true, pristine: true, focus: true};
-    const actualState = FormControlModel.nextState(previousState, { type: 'change', value: '' });
+    const actualState = FormFieldModel.nextState(previousState, { type: 'change', value: '' });
 
     expect(actualState).toMatchObject(expectedState);
   });
@@ -58,9 +58,10 @@ describe('FormControl Model', () => {
   it('Change event: should call Mask clean and apply', () => {
     const state = { valid: true, value: '', pristine: false, focus: false};
     const clean = jest.fn();
+    clean.mockReturnValue('a');
     const apply = jest.fn();
 
-    FormControlModel.nextState(state, { type: 'change', value: 'a'}, [], { clean, apply });
+    FormFieldModel.nextState(state, { type: 'change', value: 'a'}, [], { clean, apply });
 
     expect(clean).toBeCalledWith('a');
     expect(apply).toBeCalledWith('a');
@@ -69,7 +70,7 @@ describe('FormControl Model', () => {
   it('Blur event: should validate when looses focus', () => {
     const state = { valid: true, pristine: true, focus: true };
 
-    FormControlModel.nextState(state, { type: 'blur'}, [mockValidator]);
+    FormFieldModel.nextState(state, { type: 'blur'}, [mockValidator]);
 
     expect(mockValidator).toBeCalled();
   });
@@ -78,7 +79,7 @@ describe('FormControl Model', () => {
     const expectedState = { valid: true, focus: false, pristine: true};
     const previousState = { valid: true, focus: true, pristine: true };
 
-    const actualState = FormControlModel.nextState(previousState, { type: 'blur' });
+    const actualState = FormFieldModel.nextState(previousState, { type: 'blur' });
 
     expect(actualState).toMatchObject(expectedState);
   });

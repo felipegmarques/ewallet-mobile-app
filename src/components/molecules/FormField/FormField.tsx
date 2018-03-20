@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { Colors, FontSize, Sizes } from 'app/new_components/core';
-import { Caption, EW_TextInput, Label } from 'app/new_components/atoms';
+import { Colors, FontSize, Sizes } from 'app/components/core';
+import { Caption, EW_TextInput, Label } from 'app/components/atoms';
 import { Event, Mask, State, Validator, nextState } from './domain';
 
 const styles = StyleSheet.create({

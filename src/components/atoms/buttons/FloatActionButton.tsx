@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, Text, TextStyle, TouchableHighlight, View } from 'react-native';
-import { Colors, FontSize, Sizes } from 'app/new_components/core';
+import { Colors, FontSize, Sizes } from 'app/components/core';
 
 const FAB_SIZE = 56;
 const FAB_ELEVATION = 6;

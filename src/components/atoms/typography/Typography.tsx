@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import {Colors, FontSize, Sizes } from 'app/new_components/core';
+import {Colors, FontSize, Sizes } from 'app/components/core';
 
 const styles = StyleSheet.create({
   caption: {

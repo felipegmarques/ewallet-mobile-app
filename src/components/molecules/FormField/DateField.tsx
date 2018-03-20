@@ -1,19 +1,11 @@
 import * as React from 'react';
 import { DatePickerAndroid, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
 
-import { Colors, FontSize, Sizes } from 'app/new_components/core';
-import { Caption, EW_TextInput, InputUnderline, inputStyles, Label } from 'app/new_components/atoms';
+import { Colors, FontSize, Sizes } from 'app/components/core';
+import { Caption, EW_FakeTextInput, Label } from 'app/components/atoms';
 
 import { Event, Mask, State, Validator, nextState } from './domain';
 import { FormField } from './FormField';
-
-const styles = StyleSheet.create({
-  fakeInput: {
-    paddingBottom: 4,
-  },
-});
-
-
 
 interface Props {
   label: string;
@@ -61,10 +53,9 @@ export class DateField extends React.Component<Props> {
       <TouchableWithoutFeedback style={{ marginVertical: Sizes.Small }} onPress={() => this.openPicker()}>
         <View>
           <Label style={{color}}>{this.props.label}</Label>
-          <Text style={[inputStyles.input, styles.fakeInput]}>
-            {mask.apply(this.props.fieldState.value)}
-          </Text>
-          <InputUnderline color={color} />
+          <EW_FakeTextInput
+            color={color}
+            value={mask.apply(this.props.fieldState.value)} />
         </View>
       </TouchableWithoutFeedback>);
   }
@@ -76,6 +67,4 @@ export class DateField extends React.Component<Props> {
       return state.focus ? Colors.Primary : Colors.GrayXDark;
     }
   }
-
-
 }

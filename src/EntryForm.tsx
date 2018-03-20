@@ -4,8 +4,8 @@ import { KeyboardAvoidingView, View, Button } from 'react-native';
 
 import * as Validators from 'app/domain/validators';
 import * as Masks from 'app/domain/mask';
-import { Appbar, AppbarTitle, DateField, FormField } from 'app/new_components';
-import { Colors, Sizes } from 'app/new_components/core';
+import { Appbar, AppbarTitle, DateField, FormField } from 'app/components';
+import { Colors, Sizes } from 'app/components/core';
 
 export class EntryForm extends React.Component<any, any> {
 
