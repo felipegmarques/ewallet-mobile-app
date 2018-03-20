@@ -1,3 +1,4 @@
+export * from './Typography';
 export * from './buttons';
 export * from './input';
-export * from './Typography';
+export * from './HorizontalLine';

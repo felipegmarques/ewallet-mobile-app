@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { Colors, FontSize, Sizes } from './core';
-import { H2, H4, MoneyRegular, MoneyLarge } from './atoms';
-import { HorizontalLine } from './HorizontalLine';
+import { Colors, FontSize, Sizes } from 'app/components/core';
+import { H2, H4, HorizontalLine, MoneyRegular, MoneyLarge } from 'app/components/atoms';
 
 const styles = StyleSheet.create({
   cardContainer: {

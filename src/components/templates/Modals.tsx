@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FlatList, ListRenderItemInfo, Modal, StyleSheet, Text, View } from 'react-native';
-import { Colors, FontSize, Sizes } from './core';
-import { HorizontalLine } from './HorizontalLine';
+import { Colors, FontSize, Sizes } from 'app/components/core';
+import { HorizontalLine } from 'app/components/atoms/HorizontalLine';
 
 const styles = StyleSheet.create({
   modalContainer: {

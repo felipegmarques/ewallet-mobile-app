@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { FlatList, ListRenderItemInfo, Modal, StyleSheet, Text, View } from 'react-native';
-import { Colors, FontSize, Sizes } from './core';
-import { FullScreenModal } from './Modals';
-import { HorizontalLine } from './HorizontalLine';
+
+import { Colors, FontSize, Sizes } from 'app/components/core';
+import { HorizontalLine } from 'app/components/atoms/HorizontalLine';
+import { FullScreenModal } from 'app/components/templates';
 
 interface ListSelectorProperties {
   data: any[];

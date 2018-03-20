@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Colors, FontSize, Sizes } from './core';
-import { H4, MoneyRegular } from './atoms';
+import { Colors, FontSize, Sizes } from 'app/components/core';
+import { H4, MoneyRegular } from 'app/components/atoms';
 
 const styles = StyleSheet.create({
   container: {
